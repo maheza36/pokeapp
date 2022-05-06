@@ -1,40 +1,75 @@
-import React, { useContext } from 'react'
-import { AuthContext } from '../Context/Auth.Context';
-import { useForm } from '../Hooks/useForm';
-import { IAuthenticationContext } from '../Interfaces/IAuthentication';
-import { IUser } from '../Interfaces/IUser'
+import React, { useContext } from "react";
+import { AuthContext } from "../Context/Auth.Context";
+import { useForm } from "../Hooks/useForm";
+import { IAuthenticationContext } from "../Interfaces/IAuthentication";
+import { IFormLogin } from "../Interfaces/IFormLogin";
+import { IUser } from "../Interfaces/IUser";
+import { LoginTypes } from "../Types/types";
 
 const Login = () => {
+  const formState: IFormLogin = {
+    user: "",
+    userName: "",
+  };
 
-    const formState: IUser = {
-        user: "",
-        userName: "",
-        isLogged: false
+  const { handleChange, handleSubmit, form } = useForm(
+    loginCallback,
+    formState
+  );
+
+  const { auth, dispatch } = useContext(AuthContext) as IAuthenticationContext;
+
+  console.log(auth);
+
+  async function loginCallback() {
+    /* try {
+        const peticion al back
+        creacion de usuario nuevo con datos del back
+        
+    } catch (error) {
+        
+    } */
+
+    const newUser: IUser = {
+      user: form.user,
+      name: form.userName,
+      timestamp: Number(new Date()),
+      token: "viene del back",
     };
 
-    const {handleChange, handleSubmit, form} = useForm(loginCallback, formState);
-
-    const { user, dispatch } = useContext(AuthContext) as IAuthenticationContext;
-
-    async function loginCallback() {
-        console.table(form);
-    }
+    dispatch({ type: LoginTypes.Login, payload: newUser });
+  }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <>
+      <form onSubmit={handleSubmit}>
         <div>
-            <div>
-                <label htmlFor='user'>Usuario</label>
-                <input type="text" name="user" id="user" required onChange={handleChange}></input>
-            </div>
-            <div>
-                <label htmlFor="userName">Nombre Completo</label>
-                <input type="text" name="userName" id="userName" required onChange={handleChange}></input>
-            </div>
-            <button type='submit'>Ingresar</button>            
+          <div>
+            <label htmlFor="user">Usuario</label>
+            <input
+              type="text"
+              name="user"
+              id="user"
+              required
+              onChange={handleChange}
+            ></input>
+          </div>
+          <div>
+            <label htmlFor="userName">Nombre Completo</label>
+            <input
+              type="text"
+              name="userName"
+              id="userName"
+              required
+              onChange={handleChange}
+            ></input>
+          </div>
+          <button type="submit">Ingresar</button>
         </div>
-    </form>
-  )
-}
+      </form>
+      {auth.isLogged && <h1>Bienvenido</h1>}
+    </>
+  );
+};
 
-export default Login
+export default Login;

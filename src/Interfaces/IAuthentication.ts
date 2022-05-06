@@ -1,11 +1,12 @@
+import { IAction } from "./IAction";
+import { IUser } from "./IUser";
+
 export interface IAuthentication {
-    name: string,
-    user: string;
-    token: string,
-    timestamp: number
-};
+  user: IUser | null;
+  isLogged: boolean;
+}
 
 export interface IAuthenticationContext {
-    user: IAuthentication,
-    dispatch(): void
-};
+  auth: IAuthentication;
+  dispatch: React.Dispatch<IAction>;
+}

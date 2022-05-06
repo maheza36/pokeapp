@@ -1,13 +1,9 @@
+import { IAuthentication } from "../Interfaces/IAuthentication";
+import { IUser } from "../Interfaces/IUser";
+import { AuthStateType } from "../Types/types";
 
-import { IUser } from "../Interfaces/IUser"
-import { AuthStateType } from "../Types/types"
-import { ExistItem, GetItem } from "./LocalStorageHelper"
-
-export const AuthState = () : IUser =>  
-    ExistItem(AuthStateType.UserAuthInfo) 
-    ? JSON.parse(GetItem(AuthStateType.UserAuthInfo)) 
-    :  {
-        user: "",
-        userName: "",
-        isLogged: false
-    }; 
+export const AuthState = (): IAuthentication => {
+  return localStorage.getItem(AuthStateType.UserAuthInfo)
+    ? JSON.parse(localStorage.getItem(AuthStateType.UserAuthInfo) as string)
+    : { user: null, isLogged: false };
+};

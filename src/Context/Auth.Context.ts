@@ -1,4 +1,10 @@
 import { createContext } from "react";
-import { IAuthenticationContext } from "../Interfaces/IAuthentication";
+import {
+  IAuthentication,
+  IAuthenticationContext,
+} from "../Interfaces/IAuthentication";
 
-export const AuthContext = createContext<IAuthenticationContext | null>(null);
+export const AuthContext = createContext<IAuthenticationContext>({
+  auth: {} as IAuthentication,
+  dispatch: () => {},
+});
