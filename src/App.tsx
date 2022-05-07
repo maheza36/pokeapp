@@ -3,7 +3,7 @@ import "./App.css";
 import { AuthContext } from "./Context/Auth.Context";
 import { AuthState } from "./Helpers/AuthState";
 import { authReducer } from "./Reducers/Auth.Reducer";
-import Login from "./Views/Login";
+import AppRoutes from "./Routes/AppRoutes";
 
 function App() {
   const [auth, dispatch] = useReducer(authReducer, {}, AuthState);
@@ -16,7 +16,7 @@ function App() {
           dispatch,
         }}
       >
-        <Login></Login>
+        <AppRoutes/>        
       </AuthContext.Provider>
     </>
   );

@@ -1,5 +1,4 @@
 import { IAuthentication } from "../Interfaces/IAuthentication";
-import { IUser } from "../Interfaces/IUser";
 import { AuthStateType } from "../Types/types";
 
 export const AuthState = (): IAuthentication => {

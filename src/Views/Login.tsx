@@ -19,17 +19,7 @@ const Login = () => {
 
   const { auth, dispatch } = useContext(AuthContext) as IAuthenticationContext;
 
-  console.log(auth);
-
   async function loginCallback() {
-    /* try {
-        const peticion al back
-        creacion de usuario nuevo con datos del back
-        
-    } catch (error) {
-        
-    } */
-
     const newUser: IUser = {
       user: form.user,
       name: form.userName,
