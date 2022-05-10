@@ -16,7 +16,6 @@ const AppRoutes = () => {
       AuthInitState);
 
   useEffect(() => {
-    console.log(auth);
     if(auth.isLogged){
       const userSession: IAuthentication = {
         user: auth.user,
