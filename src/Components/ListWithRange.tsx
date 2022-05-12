@@ -12,7 +12,7 @@ const ListWithRange: FunctionComponent<PropListWithRange> = ({listItems}) => {
             {
                 listItems.map(element =>
                     <li>
-                        {element.name } 
+                        {element.name} 
                         <progress value={element.value} max="100"></progress>
                     </li>
                 )
