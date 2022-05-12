@@ -14,7 +14,7 @@ export const useGet = <T> (url: string)  => {
 
     useEffect(() => {
         GetData();
-    })
+    },[])
 
     const GetData = async () => {
         try{

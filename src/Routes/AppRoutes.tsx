@@ -5,6 +5,7 @@ import { AuthInitState } from '../Helpers/AuthInitState';
 import { IAuthentication } from '../Interfaces/IAuthentication';
 import { authReducer } from '../Reducers/Auth.Reducer';
 import { AuthStateType } from '../Types/types';
+import Battle from '../Views/Battle';
 import Login from '../Views/Login';
 import Selection from '../Views/Selection';
 import ProtectedRoutes from './ProtectedRoutes';
@@ -37,6 +38,7 @@ const AppRoutes = () => {
             <Routes>
               <Route path='/' element={<Selection />}></Route>
               <Route path='/Selection' element={<Selection />}></Route>
+              <Route path='/Battle' element={<Battle />}></Route>
             </Routes>
           </ProtectedRoutes>
         }></Route>

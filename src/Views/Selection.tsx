@@ -3,7 +3,7 @@ import { useGet } from '../Hooks/useGet';
 import { IPokemonResult } from '../Interfaces/IPokemonResult';
 
 const Selection = () => {
-  const[loading, data, isError ,error] = useGet<IPokemonResult>("https://pokeapi.co/api/v2/pokemon?limit=100");
+  const[loading, data, isError ,error] = useGet<IPokemonResult>("https://pokeapi.co/api/v2/pokemon?limit=10");
 
   return (
     <>
@@ -14,9 +14,9 @@ const Selection = () => {
         <div> <span>{error}</span> </div> : 
         <div>
             {
-                data?.results.map(pokemon => {
-                    return <PokemonCard pokemon={pokemon}></PokemonCard>
-                })
+                data?.results.map(pokemon => 
+                  <PokemonCard pokemon={pokemon}></PokemonCard>                  
+                )
             }
         </div>
     }

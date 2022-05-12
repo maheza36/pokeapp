@@ -1,27 +1,8 @@
 import React, { FunctionComponent } from 'react'
 import { useGet } from '../Hooks/useGet';
-
-type PropsPokeDetail = {
-    url: string;
-}
-
-export interface IPokemonDetail {
-    sprites: ISprite,
-    stats: IStat[],    
-}
-
-export interface ISprite {
-    front_default: string;
-}
-
-export interface IStat {
-    base_stat: string
-    stat: IStatDetail
-}
-
-export interface IStatDetail{
-    name: string;
-}
+import { IPokemonDetail } from '../Interfaces/IPokemonDetail';
+import { PropsPokeDetail } from '../Types/PropsPokeDetail';
+import PokemonInfo from './PokemonInfo';
 
 const PokemonDetails: FunctionComponent<PropsPokeDetail> = ({url}) => {
     const [loading, data, isError, error] = useGet<IPokemonDetail>(url);
@@ -30,18 +11,7 @@ const PokemonDetails: FunctionComponent<PropsPokeDetail> = ({url}) => {
     { loading && <div>cargando...</div>}
     {
         isError ? <div>{error}</div> :
-        <div>
-            <img src={data?.sprites.front_default} alt="Pokemon"></img>
-            <ul>
-                {
-                    data?.stats.map(stat => {
-                        return <li>
-                            {stat.stat.name} : {stat.base_stat}
-                        </li>
-                    })
-                }
-            </ul>
-        </div>
+        <PokemonInfo PokemonInfo={data as IPokemonDetail}></PokemonInfo>
     }
     </>
   )
