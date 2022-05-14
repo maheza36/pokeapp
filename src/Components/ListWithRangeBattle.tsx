@@ -5,7 +5,7 @@ type PropListWithRange = {
     listItems: IPokemonPower
 }
 
-const ListWithRange: FunctionComponent<PropListWithRange> = ({listItems}) => {
+const ListWithRangeBattle: FunctionComponent<PropListWithRange> = ({listItems}) => {
 
     return (
     <>
@@ -21,4 +21,4 @@ const ListWithRange: FunctionComponent<PropListWithRange> = ({listItems}) => {
   )
 
 }
-export default ListWithRange
+export default ListWithRangeBattle

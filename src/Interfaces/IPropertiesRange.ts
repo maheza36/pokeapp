@@ -1,4 +1,4 @@
 export interface IPropertiesRange {
     name: string;
-    value: string;
+    value: string | number;
 }

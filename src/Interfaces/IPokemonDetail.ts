@@ -1,7 +1,8 @@
+import { IPokemonPower } from "./IPokemonPower";
 
 export interface IPokemonDetail {
     sprites: ISprite;
-    stats: IStat[];
+    stats: IPokemonPower;
     name: string;
     id: number;
 }

@@ -1,24 +1,24 @@
 import React, { FunctionComponent } from 'react'
 import { IPokemonDetail } from "../Interfaces/IPokemonDetail";
-import { IPropertiesRange } from '../Interfaces/IPropertiesRange';
 import Image from "./Image";
 import ListWithRange from './ListWithRange';
+import PokemonSelect from './PokemonSelect';
 
 type PropPokemonInfo = {
     PokemonInfo: IPokemonDetail;
+    SelectPokemon: boolean
 }
 
-const PokemonInfo: FunctionComponent<PropPokemonInfo> = ({PokemonInfo}) => {
+const PokemonInfo: FunctionComponent<PropPokemonInfo> = ({PokemonInfo, SelectPokemon}) => {
 
-    const PokemonStats: IPropertiesRange[] = PokemonInfo.stats.map(p => {
-        let item: IPropertiesRange = {name: p.stat.name, value: p.base_stat};
-        return item;
-    });
   return (
     <>    
         <div>    
             <Image image={PokemonInfo.sprites.front_default} name={PokemonInfo.name}></Image>
-            <ListWithRange listItems={PokemonStats}></ListWithRange>            
+            <ListWithRange listItems={PokemonInfo.stats}></ListWithRange>
+            {
+                SelectPokemon && <PokemonSelect pokemonBattle={PokemonInfo} ></PokemonSelect>
+            }
         </div>
     </>
   )

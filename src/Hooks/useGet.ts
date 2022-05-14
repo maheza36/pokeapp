@@ -1,10 +1,9 @@
 
 import axios from "axios";
 import { useEffect, useState } from "react"
-import { pokemonRequest } from "../Helpers/pokemonMemoization";
 import { IGetOptions } from "../Interfaces/IGetOptions";
 
-export const useGet = <T> (url: string)  => {
+export const useGet = <T>(url: string)  => {
     const [data, setData] = useState<IGetOptions<T>>({
         loading: true,
         data: null,
