@@ -9,6 +9,7 @@ import Battle from '../Views/Battle';
 import Login from '../Views/Login';
 import Selection from '../Views/Selection';
 import ProtectedRoutes from './ProtectedRoutes';
+import PublicRoute from './PublicRoute';
 
 const AppRoutes = () => {
   const [auth, dispatch] = useReducer(
@@ -32,7 +33,13 @@ const AppRoutes = () => {
     <AuthContext.Provider value={{auth, dispatch}}>
       <BrowserRouter>
       <Routes>
-        <Route path="/login" element={<Login/>}></Route>
+        <Route path="/login" element={
+          <PublicRoute redirect='/selection'>
+            <Login />
+          </PublicRoute>
+        }>
+
+        </Route>
         <Route path='*' element={
           <ProtectedRoutes>
             <Routes>

@@ -15,7 +15,7 @@ const Battle = () => {
     const pokemonBattle = location.state as IPokemonDetail;
     
     const handleBack = () => {
-        navigate("/selection", {replace:true});
+        navigate("/selection", {replace: true});
     }
 
   return (
