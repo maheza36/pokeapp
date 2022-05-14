@@ -22,6 +22,9 @@ const Battle = () => {
       <>
         <div>
             <h3>Bienvenidos a las batallas pokemon!!!</h3>
+            <h5>Para jugar debes lanzar un ataque, automáticamente la maquina te atacará y podras volver atacar,
+                hasta que haya un ganador!!!
+            </h5>
             <input type="button" value="Regresar" onClick={handleBack}/>
             <div style={{display: "flex", flexWrap: "wrap", paddingLeft: "20px"}}>
                 <div className='pokemon__retador' style={{width: "50%"}}>

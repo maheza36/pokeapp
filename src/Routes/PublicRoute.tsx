@@ -1,13 +1,9 @@
 import React, { useContext } from 'react'
 import { Navigate } from 'react-router-dom';
 import { AuthContext } from '../Context/Auth.Context';
+import { PublicRouteProps } from '../Types/PublicRouteProps';
 
-export type ProtectedRouteProps = {
-    children: JSX.Element;
-    redirect: string
-};
-
-const PublicRoute = ({children, redirect}: ProtectedRouteProps) => {
+const PublicRoute = ({children, redirect}: PublicRouteProps) => {
     const {auth} = useContext(AuthContext);
     if(auth.isLogged){
         return <Navigate to={redirect} replace={true} />;

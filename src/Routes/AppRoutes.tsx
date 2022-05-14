@@ -1,5 +1,6 @@
 import React, { useEffect, useReducer } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Layout from '../Components/Layout/Layout';
 import { AuthContext } from '../Context/Auth.Context';
 import { AuthInitState } from '../Helpers/AuthInitState';
 import { IAuthentication } from '../Interfaces/IAuthentication';
@@ -31,6 +32,7 @@ const AppRoutes = () => {
   
   return (
     <AuthContext.Provider value={{auth, dispatch}}>
+      <Layout>
       <BrowserRouter>
       <Routes>
         <Route path="/login" element={
@@ -51,6 +53,7 @@ const AppRoutes = () => {
         }></Route>
       </Routes>
       </BrowserRouter>
+      </Layout>
     </AuthContext.Provider>
   );
 }
