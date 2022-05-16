@@ -29,6 +29,7 @@ const BattlePokemons: FunctionComponent<PropsBattle> = ({pokemonLocal, pokemonMa
   const [gameTurn, setGameTurn] = useState(battleuserType.none);
   const [gameWin, setGameWin] = useState(battleuserType.none);
   const [gameMessage, setGameMessage] = useState("");
+  const [isAttackTime, setIsAttackTime] = useState(false);
 
   useEffect(() => {
     const powerEmpty: IPokemonPower = {
@@ -57,17 +58,21 @@ const BattlePokemons: FunctionComponent<PropsBattle> = ({pokemonLocal, pokemonMa
 
   const startBattle = () => {
     setGameMessage("Preparando ataque... ");
+    setIsAttackTime(true);
     if(!isFinishBattle) {
       setTimeout(() => {
         battle(battleuserType.local);
       }, (2000));
-
+      
       setTimeout(() => {
         battle(battleuserType.visitante);
       }, 4000);
       
     }
-
+    
+    setTimeout(() => {
+      setIsAttackTime(false);
+    }, (4100));
   }
 
   const battle = (gameTurn: battleuserType) => {
@@ -172,6 +177,7 @@ const BattlePokemons: FunctionComponent<PropsBattle> = ({pokemonLocal, pokemonMa
       setIsBattle(false);
       setGameWin(battleuserType.visitante);
       setGameTurn(battleuserType.none);
+      setIsAttackTime(false);
       setGameMessage("Humillante para el local, ha pedido en su terreno!!!");
     }
     if(powerMachine.hp <= 0) {
@@ -180,6 +186,7 @@ const BattlePokemons: FunctionComponent<PropsBattle> = ({pokemonLocal, pokemonMa
       setIsBattle(false);
       setGameWin(battleuserType.local);
       setGameTurn(battleuserType.none);
+      setIsAttackTime(false);
       setGameMessage("Toda la afición local sabía que el triunfo sería de la casa!!!");
     }
     
@@ -219,6 +226,9 @@ const BattlePokemons: FunctionComponent<PropsBattle> = ({pokemonLocal, pokemonMa
         </div>                               
         <div style={{width: "100%", textAlign: "center", paddingTop: "35px"}}>
         {gameMessage}  {gameTurn}
+        { isAttackTime && <div className="spinner-grow spinner-grow-sm" role="status">
+          <span className="visually-hidden">Loading...</span>
+        </div>}
         </div>
         {
           gameWin !== battleuserType.none && 
