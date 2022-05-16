@@ -9,13 +9,9 @@ type PropsPokeCard = {
 const PokemonCard: FunctionComponent<PropsPokeCard> = ({pokemon}) => {
   return (
     <>
-    <br/>
-    <div style={
-        {
-            color: "Blue"
-        }
-    }>{pokemon.name}</div> 
-    <PokemonDetails url={pokemon.url}></PokemonDetails>
+    <div className="col">
+      <PokemonDetails url={pokemon.url}></PokemonDetails>
+    </div>
     </>
   )
 }

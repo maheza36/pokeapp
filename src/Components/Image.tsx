@@ -7,7 +7,9 @@ type PropImage = {
 
 const Image: FunctionComponent<PropImage> = ({image, name}) => {
   return (
-    <img src={image} alt={name}></img>
+    <img className="card-img-top" src={image} alt={name} style={{
+      height: "100px", width: "100px"
+    }}></img>
   )
 }
 

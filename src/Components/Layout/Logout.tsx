@@ -17,8 +17,8 @@ const Logout = () => {
 
   return (
     <>
-    <div>
-        <input type="button" value="Cerrar Sesión" onClick={handleLogout}></input>
+    <div className='d-flex'>
+        <input type="button" className='btn btn-danger' value="Cerrar Sesión" onClick={handleLogout}></input>
     </div>
     </>
   )

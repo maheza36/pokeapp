@@ -13,12 +13,21 @@ const PokemonInfo: FunctionComponent<PropPokemonInfo> = ({PokemonInfo, SelectPok
 
   return (
     <>    
-        <div>    
-            <Image image={PokemonInfo.sprites.front_default} name={PokemonInfo.name}></Image>
-            <ListWithRange listItems={PokemonInfo.stats}></ListWithRange>
-            {
-                SelectPokemon && <PokemonSelect pokemonBattle={PokemonInfo} ></PokemonSelect>
-            }
+        <div className="card h-100">    
+          <div style={{marginLeft: "33%"}}>
+           <Image image={PokemonInfo.sprites.front_default} name={PokemonInfo.name}></Image>
+          </div>        
+                  <div className="card-body">
+                    <h5 className="card-title text-capitalize">{PokemonInfo.name}</h5>
+                    <p className="card-text">
+                      <ListWithRange listItems={PokemonInfo.stats}></ListWithRange>
+                    </p>
+                  </div>
+                  <div className="card-footer">                    
+                      {
+                          SelectPokemon && <PokemonSelect pokemonBattle={PokemonInfo} ></PokemonSelect>
+                      }
+                  </div>
         </div>
     </>
   )

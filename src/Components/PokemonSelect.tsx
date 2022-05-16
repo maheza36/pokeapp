@@ -13,7 +13,7 @@ const PokemonSelect: FunctionComponent<PropPokemonSelect> = ({pokemonBattle}) =>
     }
   return (
     <>
-    <button type='button' onClick={handleClick}>Seleccionar</button>
+    <button type='button' onClick={handleClick} className="btn btn-success btn-sm">Seleccionar</button>
     </>
   )
 }

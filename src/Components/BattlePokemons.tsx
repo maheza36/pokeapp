@@ -209,17 +209,12 @@ const BattlePokemons: FunctionComponent<PropsBattle> = ({pokemonLocal, pokemonMa
 
   return (
     <>
-    { isBattle && <div style={{textAlign: "center", paddingTop: "35px"}}>
-      <input type="button" value="Atacar!!!" onClick={startBattle}/>
-    </div>}
 
-    <div style={{display: "flex", flexWrap: "wrap", paddingLeft: "20px", paddingTop: "20px"}}>
-        <div className='pokemon__retador' style={{width: "50%"}}>
-            <h4>Pokemon Retador {pokemonLocal.name}</h4>
+    <div style={{display: "flex", flexWrap: "wrap", paddingTop: "20px"}}>
+        <div className='pokemon__retador' style={{width: "50%", textAlign: "center"}}>
             <ListWithRangeBattle listItems={powerLocal}></ListWithRangeBattle>
         </div>
-        <div className='pokemon__maquina' style={{width: "50%"}}>
-            <h4>Pokemon Maquina {pokemonMachine.name}</h4>                               
+        <div className='pokemon__maquina' style={{width: "50%", textAlign: "center"}}>                        
             <ListWithRangeBattle listItems={powerMachine}></ListWithRangeBattle>
         </div>                               
         <div style={{width: "100%", textAlign: "center", paddingTop: "35px"}}>
@@ -227,11 +222,16 @@ const BattlePokemons: FunctionComponent<PropsBattle> = ({pokemonLocal, pokemonMa
         </div>
         {
           gameWin !== battleuserType.none && 
-          <div style={{width: "100%", textAlign: "center", paddingTop: "35px"}}>
-            GANADOOOOR!!! {gameWin}
+          <div style={{width: "100%", textAlign: "center", paddingTop: "35px", marginLeft: "150px", marginRight: "150px"}}>
+              <div className="alert alert-dark">
+              GANADOOOOR!!! {gameWin}
+              </div>
           </div>
         }
     </div>
+            { isBattle && <div style={{textAlign: "center", paddingTop: "35px"}}>
+              <input type="button" className='btn btn-primary' value="Atacar!!!" onClick={startBattle}/>
+            </div>}
 
     </>
   )
